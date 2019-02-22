@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 namespace Checkout.Cart
 {
+    using Models;
+
     public interface ICartRepository
     {
         /// <summary>

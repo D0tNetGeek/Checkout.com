@@ -1,9 +1,13 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Checkout.Location
 {
+    using EF;
     using Interfaces;
+    using Models;
 
     /// <summary>
     /// Repository for CRUD country related queries.

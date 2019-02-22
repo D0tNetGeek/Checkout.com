@@ -1,9 +1,12 @@
+using AutoMapper;
+
 namespace Checkout.BusinessLogic
 {
     using Cart;
     using Extensions;
     using Inventory;
     using Location;
+    using Models;
 
     public class ApplicationMappingProfile : Profile
     {
@@ -43,7 +46,7 @@ namespace Checkout.BusinessLogic
                 .ForMember(dest => dest.ProductCode, opt => opt.MapFrom(src => src.Product.Code))
                 .ForMember(dest => dest.ProductName, opt => opt.MapFrom(src => src.Product.Name))
                 .ForMember(dest => dest.NetPrice, opt => opt.MapFrom(src => src.Product.NetPrice))
-                .ForMember(dest => dest.TaxAmount, opt => opt.MapFrom(src.Product.NetPrice.AsTaxAmount(src.Country.Tax)));
+                .ForMember(dest => dest.TaxAmount, opt => opt.MapFrom(src=> src.Product.NetPrice.AsTaxAmount(src.Country.Tax)));
         }
     }
 }

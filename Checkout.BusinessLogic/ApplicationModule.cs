@@ -1,3 +1,5 @@
+using Microsoft.Extensions.DependencyInjection;
+
 namespace Checkout.BusinessLogic
 {
     using Caching;
@@ -16,7 +18,7 @@ namespace Checkout.BusinessLogic
         public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             return services
-                .AddTransient<ICachService, MemoryCacheService>()
+                .AddTransient<ICacheService, MemoryCacheService>()
                 .AddTransient<ICountryService, CountryService>()
                 .AddTransient<ICountryRepository, CountryRepository>()
                 .AddTransient<ICartService, CartService>()

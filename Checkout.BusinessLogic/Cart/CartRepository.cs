@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 
 namespace Checkout.Cart
 {
+    using EF;
     using Interfaces;
+    using Models;
 
     public class CartRepository : ICartRepository, ITransientService
     {

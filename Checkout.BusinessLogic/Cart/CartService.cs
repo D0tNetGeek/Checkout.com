@@ -2,11 +2,16 @@ using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Logging;
 
 namespace Checkout.Cart
 {
-    using Checkout.Exceptions;
+    using Exceptions;
+    using Extensions;
     using Interfaces;
+    using Inventory;
+    using Location;
+    using Models;
 
     public class CartService : ICartService, ITransientService
     {
@@ -62,7 +67,9 @@ namespace Checkout.Cart
         {
             try
             {
+                logger.LogDebug("Deleting item from cart {0} for product {1}", cartId, productId);
 
+                await cartRepository.RemoveAsync(cartId, productId);
             }
             catch (Exception ex)
             {
@@ -101,7 +108,7 @@ namespace Checkout.Cart
         //Private methods
         Cart Map(IEnumerable<CartEntity> cart)
         {
-            if (cart.Count() > 0)
+            if (cart.Any())
             {
                 var map = cart.First().Map<Cart>();             //First item contains main cart detail.
                 map.Items = cart.Map<IList<CartProduct>>();     //Create logic product view for cart.
@@ -116,7 +123,7 @@ namespace Checkout.Cart
         {
             var item = await productRepository.GetByIdAsync(productId);
 
-            if (item == null || item.countryId != countryId)
+            if (item == null || item.CountryId != countryId)
                 throw new CartException("The product is not available for the country specifid");
 
             return;
