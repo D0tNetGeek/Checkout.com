@@ -8,8 +8,8 @@ Current Api Version: 1.0
 This test consists of the following projects:
 
 <ul>
-<li><strong>Checkout.BusinessLogic</strong></li><br>
-Contains business logic for services and repositories responsible for data operations, such as retrieving and saving data;
+<li><strong>Checkout.BusinessLogic</strong></li>
+Contains business logic for services and repositories responsible for data operations, such as retrieving and saving data;<br>
 
 <li><strong>Checkout.BusinessLogic.Tests</strong></li><br>
 Unit tests for Checkout.Application;
