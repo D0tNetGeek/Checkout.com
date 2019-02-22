@@ -1,6 +1,6 @@
 using System;
 
-namespace Checkout.Models.Audit
+namespace Checkout.Models
 {
     public class AuditCreatorModifier
     {

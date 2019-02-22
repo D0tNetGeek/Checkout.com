@@ -9,7 +9,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Aspnetcore.MVC.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Aspnetcore.MVC.versioning" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkcore" Version="2.2.2" />
+    <PackageReference Include="SwashBuckle.ASpnetcore.swagger" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.Aspnetcore.swaggergen" Version="4.0.1" />
+    <PackageReference Include="Swashbuckle.Aspnetcore.swaggerui" Version="4.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Checkout.EF\Checkout.EF.csproj" />
+    <ProjectReference Include="..\Checkout.BusinessLogic\Checkout.BusinessLogic.csproj" />
   </ItemGroup>
 
 </Project>
