@@ -1,7 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
 namespace Checkout.Location
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    using Extensions;
     using Caching;
     using Interfaces;
     using Location;
@@ -11,7 +14,7 @@ namespace Checkout.Location
         private readonly ICacheService cacheService;
         private readonly ICountryRepository countryRepository;
 
-        public CountryService()
+        public CountryService(ICacheService cacheService, ICountryRepository countryRepository)
         {
             this.cacheService = cacheService;
             this.countryRepository = countryRepository;
@@ -19,11 +22,22 @@ namespace Checkout.Location
 
         public IList<Country> Get()
         {
-            throw new System.NotImplementedException();
+            return cacheService.Get<IList<Country>>(
+                "countries", new Func<IList<Country>>(() =>
+                {
+                    //get countries
+                    var task = countryRepository.GetAsync(true);
+                    task.Wait();
+
+                    return task.Result.MapList<Country>();
+                })
+            );
         }
-        public Task<Country> GetByIdAsync(short id)
+        public async Task<Country> GetByIdAsync(short id)
         {
-            throw new System.NotImplementedException();
+            var item = await countryRepository.GetByIdAsync(id);
+
+            return item.Map<Country>();
         }
     }
 }
