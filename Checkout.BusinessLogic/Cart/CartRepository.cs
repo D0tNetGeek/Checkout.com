@@ -1,5 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Checkout.Cart
 {
@@ -16,29 +19,63 @@ namespace Checkout.Cart
             this.context = context;
         }
 
-        public async Task<System.Collections.Generic.IList<CartEntity>> GetAsync(Guid cartId)
+        public async Task<IList<CartEntity>> GetAsync(Guid cartId)
         {
-            throw new NotImplementedException();
+            return await context.Cart
+                .Include(i => i.Product)
+                .Include(i => i.Country)
+                .Where(w => w.CartId == cartId).ToListAsync();
         }
 
-        public Task<CartEntity> GetAsync(Guid cartId, int productId)
+        public async Task<CartEntity> GetAsync(Guid cartId, int productId)
         {
-            throw new NotImplementedException();
+            return await context.Cart
+                .Include(i => i.Product)
+                .Include(i => i.Country)
+                .FirstOrDefaultAsync(f => f.CartId == cartId && f.ProductId == productId);
         }
 
-        public Task RemoveAsync(Guid cartId)
+        public async Task RemoveAsync(Guid cartId)
         {
-            throw new NotImplementedException();
+            var items = context.Cart.Where(w => w.CartId == cartId);
+
+            context.Cart.RemoveRange(items);
+
+            await context.SaveChangesAsync();
         }
 
-        public Task RemoveAsync(Guid cartId, int product)
+        public async Task RemoveAsync(Guid cartId, int productId)
         {
-            throw new NotImplementedException();
+            var match = await context.Cart.FirstOrDefaultAsync(f => f.CartId == cartId && f.ProductId == productId);
+
+            if (match != null)
+            {
+                context.Cart.Remove(match);
+
+                await context.SaveChangesAsync();
+            }
         }
 
-        public Task<CartEntity> SaveAsync(CartEntity item)
+        public async Task<CartEntity> SaveAsync(CartEntity item)
         {
-            throw new NotImplementedException();
+            var existing = await GetAsync(item.CartId, item.ProductId);
+
+            if (existing != null)
+            {
+                existing.Qty = item.Qty;
+
+                context.Cart.Update(existing);
+            }
+            else
+            {
+                //add new
+                await context.Cart.AddAsync(item);
+            }
+
+            await context.SaveChangesAsync();
+
+            //get the record to ensure price reflects true values with FK relationships in place.
+            return await GetAsync(item.CartId, item.ProductId);
         }
     }
 }

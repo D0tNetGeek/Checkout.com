@@ -36,7 +36,7 @@ namespace Checkout.Cart
         /// <param name="cartId"></param>
         /// <param name="product"></param>
         /// <returns></returns>
-        Task RemoveAsync(Guid cartId, int product);
+        Task RemoveAsync(Guid cartId, int productId);
 
         /// <summary>
         /// Saves a cart product.null Performs upsert logic based on the existance of an unique id, when 0 add else update.
