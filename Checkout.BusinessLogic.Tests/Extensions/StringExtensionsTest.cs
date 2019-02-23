@@ -2,6 +2,8 @@ using Xunit;
 
 namespace Checkout.BusinessLogic.Tests.Extensions
 {
+    using Checkout.Extensions;
+
     public class StringExtensionsTest : BaseTest
     {
         public StringExtensionsTest()

@@ -46,7 +46,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
 
             var result = await service.GetByIdAsync(Guid.NewGuid());
 
-            Assert.IsType<CartDto>(result);
+            Assert.IsType<Cart>(result);
             Assert.True(result.Items.Count() == 2);
         }
 
@@ -68,6 +68,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
             }
 
             VerifyLog();
+
             Assert.True(errorCaught);
         }
 
@@ -75,6 +76,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
         public async Task ItRemovesACart()
         {
             await service.RemoveAsync(Guid.NewGuid());
+
             cartRepo.Verify(v => v.RemoveAsync(It.IsAny<Guid>()), Times.Once);
         }
 
@@ -94,6 +96,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
             }
 
             VerifyLog();
+
             Assert.True(errorCaught);
         }
 
@@ -134,7 +137,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
 
             cartRepo.Setup(s => s.SaveAsync(It.IsAny<CartEntity>())).ReturnsAsync(Mock.Of<CartEntity>());
 
-            var result = await service.SaveAsync(new CartItemDto { ProductId = 1, CountryId = 1 });
+            var result = await service.SaveAsync(new CartItem { ProductId = 1, CountryId = 1 });
 
             cartRepo.Verify(v => v.SaveAsync(It.IsAny<CartEntity>()), Times.Once);
             productRepo.Verify(v => v.GetByIdAsync(It.IsAny<int>()), Times.Once);
@@ -149,7 +152,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
 
             try
             {
-                var result = await service.SaveAsync(new CartItemDto { ProductId = 1, CountryId = 2 });
+                var result = await service.SaveAsync(new CartItem { ProductId = 1, CountryId = 2 });
             }
             catch (CartException ex)
             {
@@ -172,7 +175,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
 
             try
             {
-                var result = await service.SaveAsync(new CartItemDto { ProductId = 1, CountryId = 1 });
+                var result = await service.SaveAsync(new CartItem { ProductId = 1, CountryId = 1 });
             }
             catch (CartException ex)
             {
@@ -180,6 +183,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
             }
 
             VerifyLog();
+
             Assert.True(errorCaught);
         }
 

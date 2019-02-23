@@ -16,6 +16,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
         {
             MockContext();
             PopulateData();
+
             repo = new CartRepository(context);
         }
 
@@ -26,6 +27,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
             Assert.Equal(1, result.Count);
 
             var match = result.First();
+
             Assert.Equal(match.ProductId, (int)1);
             Assert.Equal(match.CountryId, (int)1);
             Assert.Equal(match.Qty, (int)1);
@@ -35,6 +37,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
         public async Task ItGetsCartItem()
         {
             var result = await repo.GetAsync(cartId, 1);
+
             Assert.Equal(result.ProductId, (int)1);
             Assert.Equal(result.CountryId, (int)1);
             Assert.Equal(result.Qty, (int)1);
@@ -44,6 +47,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
         public async Task ItRemovesACart()
         {
             await repo.RemoveAsync(cartId);
+
             Assert.True(context.Cart.Count(f => f.CartId == cartId) == 0);
         }
 
@@ -51,6 +55,7 @@ namespace Checkout.BusinessLogic.Tests.Cart
         public async Task ItRemovesACartItem()
         {
             await repo.RemoveAsync(cartId, 1);
+
             Assert.Null(context
                         .Cart
                         .FirstOrDefault(f => f.CartId == cartId && f.ProductId == 1));

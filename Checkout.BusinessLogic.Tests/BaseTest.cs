@@ -1,3 +1,8 @@
+using System;
+using AutoMapper;
+using Checkout.EF;
+using Microsoft.EntityFrameworkCore;
+
 namespace Checkout.BusinessLogic.Tests
 {
     public class BaseTest
@@ -7,7 +12,7 @@ namespace Checkout.BusinessLogic.Tests
         public void ConfigureMapper()
         {
             Mapper.Reset();
-            Mapper.Initialize(ConfigureMapper =>
+            Mapper.Initialize(cfg =>
             {
                 cfg.AddProfile<ApplicationMappingProfile>();
             });
@@ -20,6 +25,7 @@ namespace Checkout.BusinessLogic.Tests
                                     .Options;
 
             context = new CheckoutContext(options);
+
             DbInitialiser.Initialize(context);
         }
     }

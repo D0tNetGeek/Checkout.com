@@ -9,7 +9,6 @@ namespace Checkout.BusinessLogic.Tests.Location
     using Microsoft.Extensions.Caching.Memory;
     using Microsoft.Extensions.Logging;
     using Moq;
-    using System;
     using System.Threading.Tasks;
 
     public class CountryServiceTest : BaseTest
@@ -36,7 +35,7 @@ namespace Checkout.BusinessLogic.Tests.Location
             repo.Setup(s => s.GetAsync(true)).ReturnsAsync(Mock.Of<List<CountryEntity>>);
             var results = service.Get();
 
-            Assert.IsType<List<CountryDto>>(results);
+            Assert.IsType<List<Country>>(results);
             // check cache
             Assert.NotNull(memCache.Get("countries"));
         }
@@ -47,7 +46,7 @@ namespace Checkout.BusinessLogic.Tests.Location
             repo.Setup(s => s.GetByIdAsync(1)).ReturnsAsync(Mock.Of<CountryEntity>());
             var result = await service.GetByIdAsync(1);
             Assert.NotNull(result);
-            Assert.IsType<CountryDto>(result);
+            Assert.IsType<Country>(result);
         }
     }
 }

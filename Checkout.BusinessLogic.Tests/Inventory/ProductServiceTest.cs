@@ -21,13 +21,13 @@ namespace Checkout.BusinessLogic.Tests.Inventory
         }
 
         [Fact]
-        public async Task ItGetsByCountryPaged()
+        public async Task ItGetsByCountry()
         {
-            repo.Setup(s => s.GetAsync(It.IsAny<PagerDto>(), 1, true)).ReturnsAsync(Mock.Of<List<ProductEntity>>());
+            repo.Setup(s => s.GetAsync(1, true)).ReturnsAsync(Mock.Of<List<ProductEntity>>());
 
-            var results = await service.GetAsync(new PagerDto(), 1);
+            var results = await service.GetAsync(1);
 
-            Assert.IsType<PagedResultDto<ProductDto>>(results);
+            Assert.IsType<List<Product>>(results);
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Checkout.BusinessLogic.Tests.Inventory
 
             var result = await service.GetByIdAsync(1);
 
-            Assert.IsType<ProductDto>(result);
+            Assert.IsType<Product>(result);
         }
     }
 }
