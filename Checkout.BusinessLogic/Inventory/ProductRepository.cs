@@ -26,7 +26,7 @@ namespace Checkout.Inventory
             return await context
                 .Product
                 .Include(products => products.Country)
-                .Where(w => w.CountryId == countryId && (isActive == null || w.IsActive == (bool) isActive))
+                .Where(w => w.CountryId == countryId && (isActive == null || w.IsActive == (bool)isActive))
                 .ToListAsync();
         }
 

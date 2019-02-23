@@ -1,4 +1,4 @@
-namespace Checkout.BusinessLogic
+namespace Checkout
 {
     public class Constants
     {

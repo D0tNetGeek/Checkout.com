@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace Checkout.Inventory
 {
@@ -14,11 +15,11 @@ namespace Checkout.Inventory
             this.productRepository = productRepository;
         }
 
-        public async Task<Product> GetAsync(short countryId)
+        public async Task<IEnumerable<Product>> GetAsync(short countryId)
         {
             var items = await productRepository.GetAsync(countryId, true);
 
-            return items.Map<Product>();
+            return items.MapList<Product>();
         }
 
         public async Task<Product> GetByIdAsync(int id)

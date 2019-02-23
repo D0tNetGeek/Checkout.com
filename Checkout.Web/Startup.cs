@@ -43,7 +43,16 @@ namespace Checkout.Web
 
             services.AddApiVersioningAndDocs();
             services.AddMemoryCache();
-            services.AddAutoMapper(typeof(ApplicationMappingProfile));
+            services.AddCors();
+
+            // services.AddAutoMapper(
+            //     typeof(ApplicationMappingProfile),
+            //     typeof(AutoMapperConfiguration));
+
+            Mapper.Initialize(config =>
+            {
+                config.AddProfile<ApplicationMappingProfile>();
+            });
 
             return services.AddDb();
         }

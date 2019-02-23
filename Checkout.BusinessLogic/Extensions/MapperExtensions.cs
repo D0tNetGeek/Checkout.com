@@ -29,19 +29,19 @@ namespace Checkout.Extensions
             return Mapper.Map<IList<TDestination>>(source);
         }
 
-        ///// <summary>
-        ///// Automapper wrapper. Maps a source object to destination based on mapping configurations.
-        ///// </summary>
-        ///// <typeparam name="TDestination"></typeparam>
-        ///// <param name="source"></param>
-        ///// <returns></returns>
-        //public static IList<TDestination> MapList<TDestination>(this IEnumerable<object> source)
+        // ///// <summary>
+        // ///// Automapper wrapper. Maps a source object to destination based on mapping configurations.
+        // ///// </summary>
+        // ///// <typeparam name="TDestination"></typeparam>
+        // ///// <param name="source"></param>
+        // ///// <returns></returns>
+        // public static PagedResult<TDestination> MapPaged<TDestination>(this IEnumerable<object> source, Pager pager)
         //    where TDestination : class
-        //{
-        //    var items = source.Map<TDestination>();
+        // {
+        //     var items = source.MapList<TDestination>();
 
-        //    return new TDestination(items);
-        //}
+        //     return new PagedResult<TDestination>(items, pager);
+        // }
     }
 }
 

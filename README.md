@@ -4,7 +4,6 @@ Current Api Version: 1.0
 
 <h2>Solution</h2>
 
-</hr>
 This test consists of the following projects:
 
 <ul>
