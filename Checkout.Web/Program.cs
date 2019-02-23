@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore;
+﻿using System;
+using Checkout.EF;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace Checkout.Web
 {

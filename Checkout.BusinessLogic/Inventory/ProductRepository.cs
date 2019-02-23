@@ -23,19 +23,23 @@ namespace Checkout.Inventory
 
         public async Task<IList<ProductEntity>> GetAsync(short countryId, bool? isActive)
         {
-            return await context
+            var productList = await context
                 .Product
                 .Include(products => products.Country)
                 .Where(w => w.CountryId == countryId && (isActive == null || w.IsActive == (bool)isActive))
                 .ToListAsync();
+
+            return productList;
         }
 
         public async Task<ProductEntity> GetByIdAsync(int id)
         {
-            return await context
+            var product = await context
                 .Product
                 .Include(products => products.Country)
                 .FirstOrDefaultAsync(f => f.Id == id);
+
+            return product;
         }
     }
 }

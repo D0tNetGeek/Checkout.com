@@ -45,6 +45,8 @@ namespace Checkout.EF
                 context.Add(new ProductEntity { Id = 4, Name = "Reebok", Code = "P004", NetPrice = 34.99M, ShortDescription = "The black leather upper creates a versatile silhouette while retro branding makes for an authentic feel. A 3.5cm platform finishes perfectly.", CountryId = 2, IsActive = true });
                 context.Add(new ProductEntity { Id = 5, Name = "Nike Airforce 1", Code = "P005", NetPrice = 50.99M, ShortDescription = "The Air Force 1 features a padded ankle collar, with a chunky Air midsole and rubber outsole to finish.", CountryId = 2, IsActive = true });
                 context.Add(new ProductEntity { Id = 6, Name = "Fila Disruptor", Code = "P006", NetPrice = 39.99M, ShortDescription = "This clean grey trainer features a nubuck layered upper with metallic rose gold accents while an exaggerated white outsole completes.", CountryId = 2, IsActive = true });
+
+                context.SaveChanges();
             }
         }
     }
