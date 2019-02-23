@@ -4,7 +4,7 @@
 // </auto-generated>
 //----------------------
 
-namespace MyNamespace
+namespace Checkout.Web.Client
 {
     #pragma warning disable
 
@@ -40,17 +40,21 @@ namespace MyNamespace
         partial void PrepareRequest(System.Net.Http.HttpClient client, System.Net.Http.HttpRequestMessage request, System.Text.StringBuilder urlBuilder);
         partial void ProcessResponse(System.Net.Http.HttpClient client, System.Net.Http.HttpResponseMessage response);
     
+        /// <summary>Gets a cart for a give Cart Id reference.</summary>
+        /// <param name="cartId">Unique cart id</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<Cart> GetAsync(System.Guid cartId, string version)
+        public System.Threading.Tasks.Task<Cart> CartByCartIdGetAsync(System.Guid cartId, string version)
         {
-            return GetAsync(cartId, version, System.Threading.CancellationToken.None);
+            return CartByCartIdGetAsync(cartId, version, System.Threading.CancellationToken.None);
         }
     
+        /// <summary>Get a cart for given Cart id</summary>
+        /// <param name="cartId">Unique cart Id</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<Cart> GetAsync(System.Guid cartId, string version, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<Cart> CartByCartIdGetAsync(System.Guid cartId, string version, System.Threading.CancellationToken cancellationToken)
         {
             if (cartId == null)
                 throw new System.ArgumentNullException("cartId");
@@ -124,17 +128,21 @@ namespace MyNamespace
             }
         }
     
+        /// <summary>REmoves an instance of a cart object and associaed items.</summary>
+        /// <param name="cartId">Unique cartId to delete all items in the cart.</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task RemoveAsync(System.Guid cartId, string version)
+        public System.Threading.Tasks.Task DeleteCartByIdAsync(System.Guid cartId, string version)
         {
-            return RemoveAsync(cartId, version, System.Threading.CancellationToken.None);
+            return DeleteCartByIdAsync(cartId, version, System.Threading.CancellationToken.None);
         }
     
+        /// <summary>Delete cart by cart Id</summary>
+        /// <param name="cartId">Unique cart id.</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task RemoveAsync(System.Guid cartId, string version, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task DeleteCartByIdAsync(System.Guid cartId, string version, System.Threading.CancellationToken cancellationToken)
         {
             if (cartId == null)
                 throw new System.ArgumentNullException("cartId");
@@ -195,17 +203,27 @@ namespace MyNamespace
             }
         }
     
+        /// <summary>Adds an item to the cart. A new cart id created if not specified on the item.</summary>
+        /// <param name="cartId">Unique cart Id of an existing cart to update.</param>
+        /// <param name="countryId">Country the cart releates to.</param>
+        /// <param name="productId">Cart item to add/update.</param>
+        /// <param name="qty">The quantity to add/update for a given cart item.</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
-        public System.Threading.Tasks.Task<CartProduct> SaveAsync(System.Guid? cartId, int countryId, int productId, int qty, string version)
+        public System.Threading.Tasks.Task<CartProduct> SaveCartAsync(System.Guid? cartId, int countryId, int productId, int qty, string version)
         {
-            return SaveAsync(cartId, countryId, productId, qty, version, System.Threading.CancellationToken.None);
+            return SaveCartAsync(cartId, countryId, productId, qty, version, System.Threading.CancellationToken.None);
         }
-    
+
+        /// <summary>Adds an item to the cart. A new cart id created if not specified on the item.</summary>
+        /// <param name="cartId">Unique cart Id of an existing cart to update.</param>
+        /// <param name="countryId">Country the cart releates to.</param>
+        /// <param name="productId">Cart item to add/update.</param>
+        /// <param name="qty">The quantity to add/update for a given cart item.</param>
         /// <returns>Success</returns>
         /// <exception cref="SwaggerException">A server side error occurred.</exception>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        public async System.Threading.Tasks.Task<CartProduct> SaveAsync(System.Guid? cartId, int countryId, int productId, int qty, string version, System.Threading.CancellationToken cancellationToken)
+        public async System.Threading.Tasks.Task<CartProduct> SaveCartAsync(System.Guid? cartId, int countryId, int productId, int qty, string version, System.Threading.CancellationToken cancellationToken)
         {
             if (version == null)
                 throw new System.ArgumentNullException("version");
