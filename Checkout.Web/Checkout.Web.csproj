@@ -25,5 +25,4 @@
     <ProjectReference Include="..\Checkout.EF\Checkout.EF.csproj" />
     <ProjectReference Include="..\Checkout.BusinessLogic\Checkout.BusinessLogic.csproj" />
   </ItemGroup>
-
 </Project>
