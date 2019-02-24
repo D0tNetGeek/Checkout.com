@@ -2,7 +2,7 @@
 
 Current Api Version: 1.0
 
-This API can be tested with real data using SwaggerUI. Set the Checkout.Web as startup project and run the project. Once the project is running, you can access the SwaggerUI at http://localhost:<port>/swagger. (Replace the port number with the Checkout.Web port running in the browser.)
+This API can be tested with real data using SwaggerUI. Set the Checkout.Web as startup project and run the project. Once the project is running, you can access the SwaggerUI at http://localhost:[port]/swagger. (Replace the port number with the Checkout.Web port running in the browser.)
 
 <h2>Prerequisites</h2>
 <ul>
@@ -15,7 +15,7 @@ This API can be tested with real data using SwaggerUI. Set the Checkout.Web as s
 <ul>
     <li>Build Solution</li>
     <li>Start with or without debugging with IIS Express on Visual Studio</li>
-    <li>Navigate to http://localhost:<port>/swagger to test the API's using Swagger UI</li>
+    <li>Navigate to http://localhost:[port]/swagger to test the API's using Swagger UI</li>
 </ul>
 
 <h2>Solution</h2>
