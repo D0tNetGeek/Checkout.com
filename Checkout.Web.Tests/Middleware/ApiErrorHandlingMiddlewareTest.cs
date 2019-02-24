@@ -20,10 +20,10 @@ namespace Checkout.Web.Tests.Middleware
             ware = new ApiErrorHandlingMiddleware(next.Object);
         }
 
-        [Fact]
-        public void ItHandlesException()
-        {
-            // TODO: add test for api middleware
-        }
+        //[Fact]
+        //public void ItHandlesException()
+        //{
+        //    // TODO: add test for api middleware
+        //}
     }
 }

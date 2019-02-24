@@ -24,7 +24,7 @@ namespace Checkout.Web.Controllers.Api.v1
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<Country> GetEnumerable() => countryService.Get();
+        public IEnumerable<Country> Get() => countryService.Get();
 
         /// <summary>
         /// Gets a country by a given countryId
@@ -32,6 +32,6 @@ namespace Checkout.Web.Controllers.Api.v1
         /// <param name="countryId">A given country Id to search for.</param>
         /// <returns>An object of Country, when found.</returns>
         [HttpGet("{countryId}")]
-        public async Task<Country> GetTask(short countryId) => await countryService.GetByIdAsync(countryId);
+        public async Task<Country> Get(short countryId) => await countryService.GetByIdAsync(countryId);
     }
 }

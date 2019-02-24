@@ -46,14 +46,14 @@ namespace Checkout.Web.Console
             }
 
             // get country by Id 
-            var countryById = checkoutClient.GetCountryByCountryId(2, "1.0").GetAwaiter().GetResult();
+            var countryById = checkoutClient.GetCountryByCountryId(1, "1.0").GetAwaiter().GetResult();
 
             System.Console.WriteLine("");
             System.Console.WriteLine("Country by Country Id");
             System.Console.WriteLine($"Country Id: {countryById.Id}, IsoCode: {countryById.IsoCode}, Name: {countryById.Name}, Currency: {countryById.CurrencySymbol}");
 
             // create a new cart with a product
-            var cartProduct = checkoutClient.SaveCartAsync(Guid.Empty, 2, 4, 2, "1.0").GetAwaiter().GetResult();
+            var cartProduct = checkoutClient.SaveCartAsync(Guid.Empty, 1, 2, 2, "1.0").GetAwaiter().GetResult();
 
             System.Console.WriteLine("");
             System.Console.WriteLine("Add new product to the cart");
@@ -67,7 +67,7 @@ namespace Checkout.Web.Console
             System.Console.WriteLine($"Cart Id: {cart.CartId}, Country IsoCode: {cart.CountryIsoCode}, Item Count: {cart.Items.Count}");
 
             // update a cart with a product
-            cartProduct = checkoutClient.SaveCartAsync(cartProduct.CartId, 2, 5, 3, "1.0").GetAwaiter().GetResult();
+            cartProduct = checkoutClient.SaveCartAsync(cartProduct.CartId, 1, 3, 3, "1.0").GetAwaiter().GetResult();
 
             System.Console.WriteLine("");
             System.Console.WriteLine("Update Cart");

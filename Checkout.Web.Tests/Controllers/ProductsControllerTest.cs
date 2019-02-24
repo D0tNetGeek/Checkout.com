@@ -1,12 +1,12 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Checkout.Web.Tests.Controllers
 {
-    using Checkout.Inventory;
-    using Checkout.Web.Controllers.Api.v1;
+    using Inventory;
+    using Web.Controllers.Api.v1;
     using Moq;
-    using System.Threading.Tasks;
 
     public class ProductsControllerTest
     {
@@ -20,20 +20,22 @@ namespace Checkout.Web.Tests.Controllers
         }
 
         [Fact]
-        public async Task ItGetsPagedProducts()
+        public async Task ItGetsProducts()
         {
-            var mock = new PagedResultDto<ProductDto>(Mock.Of<List<ProductDto>>(), Mock.Of<PagerDto>());
-            service.Setup(s => s.GetAsync(It.IsAny<PagerDto>(), It.IsAny<short>())).ReturnsAsync(mock);
-            var result = await ctrl.Get((short)1);
-            Assert.IsType<PagedResultDto<ProductDto>>(result);
+            service.Setup(s => s.GetAsync(It.IsAny<short>())).ReturnsAsync(new List<Product>());
+
+            var result = await ctrl.Get(1);
+
+            Assert.IsType<List<Product>>(result);
         }
 
         [Fact]
         public async Task ItGetsProductById()
         {
-            service.Setup(s => s.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(new ProductDto());
-            var result = await ctrl.Get(1);
-            Assert.IsType<ProductDto>(result);
+            service.Setup(s => s.GetByIdAsync(It.IsAny<int>())).ReturnsAsync(new Product());
+            Product result = await ctrl.GetProduct(1);
+
+            Assert.IsType<Product>(result);
         }
     }
 }

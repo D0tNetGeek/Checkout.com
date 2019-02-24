@@ -3,9 +3,9 @@ using Xunit;
 
 namespace Checkout.Web.Tests.Controllers
 {
-    using Checkout.Cart;
-    using Checkout.Exceptions;
-    using Checkout.Web.Controllers.Api.v1;
+    using Cart;
+    using Exceptions;
+    using Web.Controllers.Api.v1;
     using Moq;
     using System.Threading.Tasks;
 
@@ -23,9 +23,10 @@ namespace Checkout.Web.Tests.Controllers
         [Fact]
         public async Task ItGetsACart()
         {
-            service.Setup(s => s.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(new CartDto());
+            service.Setup(s => s.GetByIdAsync(It.IsAny<Guid>())).ReturnsAsync(new Cart());
             var result = await ctrl.Get(Guid.NewGuid());
-            Assert.IsType<CartDto>(result);
+
+            Assert.IsType<Cart>(result);
         }
 
         [Fact]
@@ -66,9 +67,11 @@ namespace Checkout.Web.Tests.Controllers
         [Fact]
         public async Task ItSavesAnItem()
         {
-            service.Setup(s => s.SaveAsync(It.IsAny<CartItemDto>())).ReturnsAsync(new CartProductDto());
-            var result = await ctrl.Save(Mock.Of<CartItemDto>());
-            Assert.IsType<CartProductDto>(result);
+            service.Setup(s => s.SaveAsync(It.IsAny<CartItem>())).ReturnsAsync(new CartProduct());
+
+            var result = await ctrl.Save(new CartItem());
+
+            Assert.IsType<CartProduct>(result);
         }
 
         [Fact]
