@@ -48,6 +48,9 @@ Provides a real world example of how to use the CSharp client library code in Ch
 Unit tests for Checkout.Web.</br></br>
 </ul>
 
+<h2>Swagger UI</h2>
+<p><img src="./SwaggerUI.png"></p>
+
 <h2>Setup</h2>
 <p>NodeJS must be installed on your system.</p>
 
