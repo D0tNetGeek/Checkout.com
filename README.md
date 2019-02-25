@@ -20,7 +20,7 @@ This API can be tested with real data using SwaggerUI. Set the Checkout.Web as s
 
 <h2>Solution</h2>
 
-This test consists of the following projects:
+This solution consists of the following projects:
 
 <ul>
 <li><strong>Checkout.BusinessLogic</strong></li>
@@ -52,7 +52,7 @@ Unit tests for Checkout.Web.</br></br>
 <p><img src="./SwaggerUI.png"></p>
 
 <h2>Setup</h2>
-<p>NodeJS must be installed on your system.</p>
+<p>NodeJS must be installed on your system in case you are planning to use VS code.</p>
 
 <p>Clone or download this repository to your local machine. Then click the file Checkout.com.sln file, this should open the solution correctly whereby you will be presented with an N-layer solution.
 
